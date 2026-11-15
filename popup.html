@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>X Nuke DMs</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div>
+      <strong>X Nuke DMs</strong>
+      <p>Bulk-delete conversations in your inbox.</p>
+    </div>
+  </header>
+
+  <p class="note">Same result as Delete conversation on X. The thread leaves your inbox and the other person keeps their copy. This cannot be undone.</p>
+
+  <section class="actions">
+    <button id="scan" class="secondary" type="button">Scan inbox</button>
+    <button id="stop" class="secondary" type="button" disabled>Stop</button>
+  </section>
+
+  <section>
+    <h2>Include</h2>
+    <div id="buckets" class="chips"></div>
+    <label class="field">At least
+      <input id="days" type="number" min="0" max="36500" step="1" inputmode="numeric" aria-label="Minimum age in days">
+      days old
+    </label>
+    <input id="search" type="search" placeholder="Filter by name" aria-label="Filter by name">
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2 id="count">No scan yet</h2>
+      <button id="toggle" type="button">Select all</button>
+    </div>
+    <div id="list" class="list"></div>
+    <p id="truncated" class="hint" hidden></p>
+  </section>
+
+  <section class="confirm">
+    <label class="field">Type DELETE to confirm
+      <input id="confirm" autocomplete="off" spellcheck="false" aria-label="Type DELETE to confirm">
+    </label>
+    <label class="field">Pause
+      <input id="delay" type="number" min="500" max="5000" step="100" value="1200" aria-label="Pause between deletes in milliseconds">
+      ms
+    </label>
+    <button id="delete" class="danger" type="button" disabled>Delete</button>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <h2>Debug</h2>
+      <button id="clear-log" type="button">Clear</button>
+    </div>
+    <div id="log" class="log" aria-live="polite"></div>
+  </section>
+
+  <footer>
+    <p id="status">Open x.com while signed in.</p>
+  </footer>
+
+  <script src="inbox.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
