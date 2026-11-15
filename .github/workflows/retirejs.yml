@@ -1,0 +1,17 @@
+name: JavaScript vulnerability scan
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  retirejs:
+    name: Retire.js
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Scan with Retire.js
+        run: docker run --rm -v "${{ github.workspace }}:/app" gruebel/retirejs:latest
